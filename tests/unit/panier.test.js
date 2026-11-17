@@ -19,4 +19,13 @@ describe('total()', () => {
     const items = [{ prix: 10, qte: 0 }, { prix: 5, qte: 2 }];
     expect(total(items)).toBe(10);
   });
+  test('refuse un prix négatif', () => {
+    const total = (items) =>
+  items.reduce((s, i) => {
+    if (i.prix < 0) throw new Error('Prix négatif');
+    return s + i.prix * i.qte;
+  }, 0);
+
+module.exports = { total };
+  });
 });
